@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=credit_manager
+    username: postgres
+    password: mysecretpassword
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        default_schema: credit_manager
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yaml
+    enabled: true
+server:
+  port: 8182
+
+ms-offer:
+  name: ms-offer
+  url: https://polar-lowlands-53572-4147c5b66e05.herokuapp.com

@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: Offer Table
+      author: Fuad Muradov
+      changes:
+        - createTable:
+            tableName: offer
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: term
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest
+                  type: numeric(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: monthly_payment
+                  type: numeric(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: numeric(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: accepted
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: credit_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+            remarks: Create Credits table for MS
+        - addForeignKeyConstraint:
+            baseTableName: offer
+            baseColumnNames: credit_id
+            constraintName: fk_credit_offer
+            referencedTableName: credit
+            referencedColumnNames: id
+
